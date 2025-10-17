@@ -10,7 +10,7 @@ class Book:
         self.importer = importer  
         self.quantity = quantity 
 
-    def input_info(self):
+    def input_info(self, importer=None):
         # BookID: 1 ký tự in hoa + 4 số, duy nhất
         while True:
             bid = input("Nhập mã sách (VD: A0001): ").strip()
@@ -51,6 +51,21 @@ class Book:
                 break
             print("Tình trạng không hợp lệ.")
 
+        # Nhập người nhập sách (gộp họ tên + mã NV)
+        while True:
+            name = input("Nhập họ tên nhân viên nhập: ").strip()
+            if re.match(r"^[A-ZÀ-ỸĐ][a-zà-ỹđ]+(\s[A-ZÀ-ỸĐ][a-zà-ỹđ]+)*$", name):
+                break
+            print("Họ tên nhân viên không hợp lệ.")
+
+        while True:
+            staff_id = input("Nhập mã nhân viên (VD: NV20251015_001): ").strip()
+            if re.match(r"^NV\d{8}_\d{3}$", staff_id):
+                break
+            print(" Mã nhân viên không hợp lệ (phải có dạng NVYYYYMMDD_XXX).")
+
+        # Gộp lại thành 1 chuỗi duy nhất
+        self.importer = f"{name} – {staff_id}"
 
         # Nhập số lượng
         while True:
@@ -65,11 +80,16 @@ class Book:
 
     def display_info(self):
         print("\n===== THÔNG TIN SÁCH =====")    
-        print(f"Mã sách: {self.book_id}")
-        print(f"Tên sách: {self.title}")
-        print(f"Tác giả: {self.author}")
-        print(f"Nhà xuất bản: {self.publisher}")
-        print(f"Tình trạng: {self.status}")
+        print(f"{self.book_id:<8} | {self.title:<25} | {self.author:<20} | {self.publisher:<20} | {self.status:<10} | {self.quantity:<5} | {self.importer:<30}")
+
+if __name__ == "__main__":
+    print("=== NHẬP THÔNG TIN SÁCH MỚI ===")
+    book = Book()          # Khởi tạo đối tượng sách
+    book.input_info()      # Gọi hàm nhập thông tin sách
+    book.display_info()    # Gọi hàm hiển thị thông tin sách
+
+
+
 
 
 
