@@ -87,12 +87,8 @@ class Reader(Person):
 
     def display_info(self):
         print("\n===== THÔNG TIN ĐỘC GIẢ =====")
-        print(f"Mã độc giả: {self.reader_id}")
-        print(f"Họ tên: {self.full_name}")
-        print(f"Tuổi: {self.age}")
-        print(f"Lớp: {self.class_name}")
-        print(f"Ngày đăng ký: {self.register_date}")
-        print(f"Số sách đang mượn: {self.borrowed_books}")
+        print(f"{'Mã độc giả':<10} | {'Họ tên':<25} | {'Tuổi':<6} | {'Lớp':<6} | {'Ngày đăng ký':<10} | {'Sách mượn':<5}")
+        print(f"{self.reader_id:<10} | {self.full_name:<25} | {self.age:<6} | {self.class_name:<6} | {self.register_date:<10} | {self.borrowed_books:<5}")
 
 class Staff(Person):
     def __init__(self, full_name="", age=0, staff_id="", position="",  start_date=""):
@@ -154,11 +150,8 @@ class Staff(Person):
 
     def display_info(self):
         print("\n--- THÔNG TIN NHÂN VIÊN ---")
-        print(f"Họ tên: {self.full_name}")
-        print(f"Tuổi: {self.age}")
-        print(f"Mã nhân viên: {self.staff_id}")
-        print(f"Chức vụ: {self.position}")
-        print(f"Ngày vào làm: {self.start_date}")
+        print(f"{'Mã NV':<15} | {'Họ tên':<25} | {'Tuổi':<6} | {'Chức vụ':<15} | {'Ngày vào làm':<10}")
+        print(f"{self.staff_id:<15} | {self.full_name:<25} | {self.age:<6} | {self.position:<12} | {self.start_date:<10}")
 
 
 # =========================
@@ -174,11 +167,5 @@ if __name__ == "__main__":
     staff = Staff()
     staff.input_info()
     staff.display_info()
-
-    # Gọi thử các phương thức riêng của nhân viên
-    print("\n=== THỬ NGHIỆM CHỨC NĂNG CỦA NHÂN VIÊN ===")
-    staff.import_book()
-    staff.lend_book()
-    staff.receive_book()
 
 
