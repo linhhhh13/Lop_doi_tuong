@@ -66,8 +66,6 @@ class BorrowSlip:
 
     def display_info(self):
         print("\n===== THÔNG TIN PHIẾU MƯỢN =====")
-        print(f"Mã phiếu mượn: {self.borrow_id}")
-        print(f"Mã sách mượn: {self.book_id}")
-        print(f"Mã độc giả: {self.reader_id}")
-        print(f"Ngày mượn: {self.borrow_date}")
-        print(f"Ngày trả: {self.return_date if self.return_date else 'Chưa trả'}")
+        print(f"{'Mã phiếu':<15} | {'Mã sách':<8} | {'Mã độc giả':<10} | {'Ngày mượn':<10} | {'Ngày trả':<10}")
+        print(f"{self.borrow_id:<15} | {self.book_id:<8} | {self.reader_id:<10} | {self.borrow_date:<10} | {self.return_date if self.return_date else 'Chưa trả':<10}")
+
